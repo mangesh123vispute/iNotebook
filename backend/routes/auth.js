@@ -3,10 +3,10 @@ const User = require("../models/User");
 const { body, validationResult } = require("express-validator");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
-var jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 const JWT_SECRET = "Mangeshisgood$boy";
 const fetchuser = require("../middelware/fetchuser");
-
+let success = false;
 // Route 1:create a user using POST:"/api/auth/createuser" no login required
 
 router.post(
@@ -63,32 +63,39 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      success = false;
+      return res.status(400).json({ success, errors: errors.array() });
     }
     const { email, password } = req.body;
     try {
       let user = await User.findOne({ email });
       if (!user) {
-        return res
-          .status(400)
-          .json({ errors: "Please try to login with correct credentials" });
+        success = false;
+        return res.status(400).json({
+          success,
+          errors: "Please try to login with correct credentials",
+        });
       }
       const passwordCompare = await bcrypt.compare(password, user.password);
       if (!passwordCompare) {
-        return res
-          .status(400)
-          .json({ errors: "Please try to login with correct credentials" });
+        success = false;
+        return res.status(400).json({
+          success,
+          errors: "Please try to login with correct credentials",
+        });
       }
       const data = {
         user: {
           id: user.id,
         },
       };
+      success = true;
       const authToken = jwt.sign(data, JWT_SECRET);
-      res.json({ authToken });
+      res.json({ success, authToken });
     } catch (err) {
+      success = false;
       console.error(err.message);
-      res.status(500).send("Internal Server Error");
+      res.status(500).send(success, "Internal Server Error");
     }
   }
 );

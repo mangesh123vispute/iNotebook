@@ -18,3 +18,6 @@ your task must be <=3
 
 <!-- instead of the cards ,
 use visualization which will be much more effictive -->
+
+<!-- Add mechinism to give the priority to the work in the day,
+month and year -->

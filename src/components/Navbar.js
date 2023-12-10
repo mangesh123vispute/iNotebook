@@ -46,17 +46,16 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-          <form className="d-flex">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
+          <Link to="/login">
+            <button type="button" className="btn btn-primary mx-2">
+              Login
             </button>
-          </form>
+          </Link>
+          <Link to="/signup">
+            <button type="button" className="btn btn-primary">
+              Sign up
+            </button>
+          </Link>
         </div>
       </div>
     </nav>
