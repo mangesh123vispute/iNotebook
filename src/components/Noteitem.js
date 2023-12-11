@@ -74,32 +74,6 @@ function Noteitem(props) {
           </div>
         </div>
       </div>
-
-      {/* <div className="col-md-3  ms-3 my-3 card">
-        <div className="card-body">
-          <div className="d-flex ">
-            <h5 className="card-title p-2 flex-grow-1 ">{note.tag}</h5>
-            <i
-              className="fa-solid fa-pen-to-square p-2"
-              onClick={() => {
-                updateNote(note);
-              }}
-            ></i>
-            <i
-              className="fa-solid fa-trash  p-2"
-              onClick={() => {
-                deleteNote(note._id);
-              }}
-            ></i>
-          </div>
-          <div className="container">
-            <h6 className="card-subtitle mb-2 text-body-secondary">
-              {note.title}
-            </h6>
-            <p className="card-text">{note.description}</p>
-          </div>
-        </div>
-      </div> */}
     </>
   );
 }
