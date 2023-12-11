@@ -10,7 +10,7 @@ function Login(props) {
   });
   const handelSubmit = async (e) => {
     e.preventDefault();
-    const host = "http://localhost:5000";
+    const host = "https://famous-sfogliatella-ad481a.netlify.app";
 
     const response = await fetch(`${host}/api/auth/login`, {
       method: "POST",

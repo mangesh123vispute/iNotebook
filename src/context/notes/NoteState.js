@@ -4,7 +4,7 @@ import { useState } from "react";
 const NoteState = (props) => {
   const initialNotes = [];
   const [notes, setNotes] = useState(initialNotes);
-  const host = "http://localhost:5000";
+  const host = "https://famous-sfogliatella-ad481a.netlify.app";
 
   // getnotes
   const getNotes = async () => {
@@ -21,7 +21,7 @@ const NoteState = (props) => {
 
   //add note
   const addNote = async (title, description, tag) => {
-    const host = "http://localhost:5000";
+    const host = "https://famous-sfogliatella-ad481a.netlify.app";
     const response = await fetch(`${host}/api/notes/addnote/`, {
       method: "POST",
       headers: {
@@ -37,7 +37,7 @@ const NoteState = (props) => {
     setNotes(notes.concat(note));
   };
   const deleteNote = async (id) => {
-    const host = "http://localhost:5000";
+    const host = "https://famous-sfogliatella-ad481a.netlify.app";
     const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
       method: "DELETE",
       headers: {
@@ -54,7 +54,7 @@ const NoteState = (props) => {
     setNotes(newNotes);
   };
   const editNote = async (id, title, description, tag) => {
-    const host = "http://localhost:5000";
+    const host = "https://famous-sfogliatella-ad481a.netlify.app";
     console.log(title);
     console.log(description);
     console.log(tag);

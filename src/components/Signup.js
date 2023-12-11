@@ -12,17 +12,20 @@ function Signup(props) {
   const handelSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(`http://localhost:5000/api/auth/createuser`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: credentials.name,
-        email: credentials.email,
-        password: credentials.password,
-      }),
-    });
+    const response = await fetch(
+      `https://famous-sfogliatella-ad481a.netlify.app/api/auth/createuser`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: credentials.name,
+          email: credentials.email,
+          password: credentials.password,
+        }),
+      }
+    );
 
     const result = await response.json();
 
