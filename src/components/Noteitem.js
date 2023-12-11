@@ -51,12 +51,14 @@ function Noteitem(props) {
             className="fa-solid fa-pen-to-square p-2"
             onClick={() => {
               updateNote(note);
+              props.showAlert("Updated successfully", "success");
             }}
           ></i>
           <i
             className="fa-solid fa-trash  p-2"
             onClick={() => {
               deleteNote(note._id);
+              props.showAlert("Deleted successfully", "success");
             }}
           ></i>
         </div>

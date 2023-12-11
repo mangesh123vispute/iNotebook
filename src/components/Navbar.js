@@ -46,16 +46,32 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-          <Link to="/login">
-            <button type="button" className="btn btn-primary mx-2">
-              Login
+
+          {!localStorage.getItem("token") ? (
+            <div>
+              <Link to="/login">
+                <button type="button" className="btn btn-primary mx-2">
+                  Login
+                </button>
+              </Link>
+              <Link to="/signup">
+                <button type="button" className="btn btn-primary">
+                  Sign up
+                </button>
+              </Link>
+            </div>
+          ) : (
+            <button
+              type="button"
+              className="btn btn-primary mx-2"
+              onClick={() => {
+                localStorage.removeItem("token");
+                window.location.reload();
+              }}
+            >
+              Logout
             </button>
-          </Link>
-          <Link to="/signup">
-            <button type="button" className="btn btn-primary">
-              Sign up
-            </button>
-          </Link>
+          )}
         </div>
       </div>
     </nav>

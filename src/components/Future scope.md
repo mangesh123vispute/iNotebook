@@ -21,3 +21,16 @@ use visualization which will be much more effictive -->
 
 <!-- Add mechinism to give the priority to the work in the day,
 month and year -->
+
+Add complete the task function and based on that give reward ,
+create the strick of works
+if work is completed within the time
+increse the streak of the task
+
+connect it to the live database and depoly it
+Add the history of tasks and
+striks
+
+if work done ,click to done and then add taks to the completed work and increase the strick
+
+create the user profile

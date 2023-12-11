@@ -2,8 +2,10 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import noteContext from "../context/notes/noteContext";
 import Noteitem from "./Noteitem";
 import Addnote from "./Addnote";
+import { useNavigate } from "react-router-dom";
 
-function Note() {
+function Note(props) {
+  const navigate = useNavigate();
   const context = useContext(noteContext);
   const { notes, getNotes, editNote } = context;
   const ref = useRef(null);
@@ -36,12 +38,17 @@ function Note() {
   };
 
   useEffect(() => {
-    getNotes();
+    if (localStorage.getItem("token")) {
+      getNotes();
+    } else {
+      props.showAlert("Please Login", "danger");
+      navigate("/login");
+    }
   }, []);
 
   return (
     <>
-      <Addnote />
+      <Addnote showAlert={props.showAlert} />
       <button
         ref={ref}
         type="button"
@@ -159,6 +166,7 @@ function Note() {
               key={note._id}
               notes={notes[index]}
               updateNote={updateNote}
+              showAlert={props.showAlert}
             />
           );
         })}
